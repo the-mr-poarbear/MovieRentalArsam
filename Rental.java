@@ -3,7 +3,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.text.SimpleDateFormat;  
 public class Rental {
-	private Movie rentedMovie ;
+	private Item rentedItem ;
 	private Customer renter ;
 	private int ID  ;
 	private int instanceID = 0;
@@ -12,7 +12,9 @@ public class Rental {
 	String rentalDateStr;
 	String returnDateStr;
 	SimpleDateFormat obj = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
-	Rental(Movie rentedMovie,Customer renter ){
+	Rental(Item rentedItem,Customer renter ){
+		this.rentedItem = rentedItem;
+		this.renter = renter ;
 		int ID = instanceID;
 		AddID();
 		
@@ -27,8 +29,8 @@ public class Rental {
 		return ID ;
 	}
 	
-	public Movie GetMoive() {
-		return rentedMovie ;
+	public Item GetItem() {
+		return rentedItem ;
 	}
 	public Customer GetCustomer() {
 		return renter ;

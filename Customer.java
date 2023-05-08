@@ -12,6 +12,10 @@ public class Customer {
 	private int instanceID = 0;
 	private List<Rental> RentalList  ;
 	Customer(String name, String email,String phone, String address){
+		this.name = name ;
+		this.email = email;
+		this.phone = phone;
+		this.address = address;
 		int ID = instanceID;
 		AddID();
 		RentalList = new ArrayList<Rental>();
@@ -42,5 +46,15 @@ public class Customer {
 	}
 	public void AddRental(Rental rental) {
 		RentalList.add(rental);
+	}
+	void ShowRental() {
+		for(Rental rental : RentalList) {
+			System.out.println(rental.GetItem().GetTitle());
+		}
+	
+	}
+	
+	String Show() {
+		return "name : " + name + "email : " + email + "phone : " + phone ; 
 	}
 }

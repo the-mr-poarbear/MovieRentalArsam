@@ -2,46 +2,57 @@ package MovieRentall;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class RentalStore {
 	private List<Customer> RegisteredPpl = new ArrayList<Customer>();
-	private List<Movie> MovieList = new ArrayList<Movie>();
-	
+	private List<Item> ItemList = new ArrayList<Item>();
+	private Customer customer;
 	void Register(Customer customer) {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter your name : ");
+		String name = s.nextLine();
+		System.out.println("Enter your email : ");
+		String email = s.nextLine();
+		System.out.println("Enter your phone : ");
+		String phone = s.nextLine();
+		System.out.println("Enter your address : ");
+		String address = s.nextLine();
+		customer = new Customer(name , email , phone , address);
 		RegisteredPpl.add(customer);
 		
 	}
-	void AddMovie(Movie movie) {
-		MovieList.add(movie);
+	void AddItem(Item item) {
+		ItemList.add(item);
 	}
-	void RemoveMovie(Movie movie) {
+	void RemoveItem(Item item) {
 		int i ;
-		for(i = 0 ; i < MovieList.size() ; i++) {
-			if(MovieList.get(i).equals(movie)) {
-				MovieList.remove(i);
+		for(i = 0 ; i < ItemList.size() ; i++) {
+			if(ItemList.get(i).equals(item)) {
+				ItemList.remove(i);
 			}
 		}
 	}
-	public List<Movie> GetAvailableMovies() {
-		List<Movie> AvailableMovieList = new ArrayList<Movie>();
-		for(int i = 0 ; i < MovieList.size() ; i++) {
-			if(MovieList.get(i).IsAvailable()) {
-				AvailableMovieList.add(MovieList.get(i));
+	public List<Item> GetAvailableItems() {
+		List<Item> AvailableItemList = new ArrayList<Item>();
+		for(int i = 0 ; i < ItemList.size() ; i++) {
+			if(ItemList.get(i).IsAvailable()) {
+				AvailableItemList.add(ItemList.get(i));
 			}
 		}
-		return AvailableMovieList;
+		return AvailableItemList;
 	}
-	void RentMovie(Movie movie , Customer customer ) {
-		Rental rental = new Rental(movie , customer);
-		movie.SetAvailable(false);
+	void RentItem(Item item , Customer customer ) {
+		Rental rental = new Rental(item , customer);
+		item.SetAvailable(false);
 		customer.AddRental(rental);
 		
 	}
 	
-	void ReturnMovie(Rental rental) {
-		Movie movie = rental.GetMoive();
+	void ReturnItem(Rental rental) {
+		Item item = rental.GetItem();
 		Customer customer = rental.GetCustomer();
-		movie.SetAvailable(true);
+		item.SetAvailable(true);
 		for(int i = 0 ; i < customer.GetRental().size() ; i++) {
 			if(customer.GetRental().get(i).equals(rental)) {
 				customer.GetRental().remove(i) ;
@@ -49,7 +60,7 @@ public class RentalStore {
 		}
 	}
 	
-	public Customer GetCustomerBtID(int ID ) {
+	public Customer GetCustomerByID(int ID ) {
 		for(int i = 0 ; i < RegisteredPpl.size() ; i++ ) {
 			if(RegisteredPpl.get(i).GetID()== ID) {
 				return RegisteredPpl.get(i);
@@ -59,24 +70,24 @@ public class RentalStore {
 		
 	}
 	
-	public Movie GetMovieByID(int ID) {
-		for(int i = 0 ; i < MovieList.size() ; i++ ) {
-			if(MovieList.get(i).GetID()== ID) {
-				return MovieList.get(i);
+	public Item GetItemByID(int ID) {
+		for(int i = 0 ; i < ItemList.size() ; i++ ) {
+			if(ItemList.get(i).GetID()== ID) {
+				return ItemList.get(i);
 			}			
 		}
 		return null;
 		
 	}
 	
-	void ShowMovieList() {
-		for(Movie movie : this.GetAvailableMovies()) {
-			System.out.println(movie.ShowMovie()); 
+	void ShowItemList() {
+		for(Item item : this.GetAvailableItems()) {
+			System.out.println(item.Show()); 
 		}
 	}
 	
-	public List <Movie> GetMovieList(){
-		return MovieList;
+	public List <Item> GetItemList(){
+		return ItemList;
 	}
 	
 }
