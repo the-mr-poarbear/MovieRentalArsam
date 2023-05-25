@@ -1,0 +1,10 @@
+/**
+ * 
+ */
+/**
+ * @author arsam
+ *
+ */
+module MovieRental {
+	
+}
