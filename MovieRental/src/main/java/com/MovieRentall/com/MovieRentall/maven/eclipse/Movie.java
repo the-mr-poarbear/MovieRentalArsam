@@ -17,19 +17,19 @@ public class Movie extends Item {
 	}
 	
 	
-	public String GetCast() {
+	public String getCast() {
 		return cast;
 	}
 	
-	public String GetDirector() {
+	public String getDirector() {
 		return director ;
 	}
 	
-	public void SetCast(String cast ) {
+	public void setCast(String cast ) {
 		this.cast = cast ;
 	}
 	
-	public void SetDirector(String director) {
+	public void setDirector(String director) {
 		this.director = director;
 	}
 	

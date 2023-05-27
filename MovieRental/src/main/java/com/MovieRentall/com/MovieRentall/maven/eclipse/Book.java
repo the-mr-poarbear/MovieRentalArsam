@@ -14,11 +14,11 @@ public class Book extends Item {
 		this.isAvailable = isAvailable;
 	}
 	
-	public String GetWriter() {
+	public String getWriter() {
 		return writer ;
 	}
 	
-	public void SetWriter(String writer) {
+	public void setWriter(String writer) {
 		this.writer = writer ;
 	}
 	

@@ -5,20 +5,11 @@ import java.util.List;
 import java.util.Scanner;
 
 public class RentalStore {
+	static int id = 1;
 	private List<Customer> RegisteredPpl = new ArrayList<Customer>();
 	private List<Item> ItemList = new ArrayList<Item>();
 	private Customer customer;
 	void Register(Customer customer) {
-		Scanner s = new Scanner(System.in);
-		System.out.println("Enter your name : ");
-		String name = s.nextLine();
-		System.out.println("Enter your email : ");
-		String email = s.nextLine();
-		System.out.println("Enter your phone : ");
-		String phone = s.nextLine();
-		System.out.println("Enter your address : ");
-		String address = s.nextLine();
-		customer = new Customer(name , email , phone , address);
 		RegisteredPpl.add(customer);
 		
 	}
@@ -43,8 +34,10 @@ public class RentalStore {
 		return AvailableItemList;
 	}
 	void RentItem(Item item , Customer customer ) {
-		Rental rental = new Rental(item , customer);
-		item.SetAvailable(false);
+		Customer temp = new Customer(customer.getId());
+		id++;
+		Rental rental = new Rental(item , temp , id);
+		item.setAvailable(false);
 		customer.AddRental(rental);
 		
 	}
@@ -52,17 +45,17 @@ public class RentalStore {
 	void ReturnItem(Rental rental) {
 		Item item = rental.GetItem();
 		Customer customer = rental.GetCustomer();
-		item.SetAvailable(true);
-		for(int i = 0 ; i < customer.GetRental().size() ; i++) {
-			if(customer.GetRental().get(i).equals(rental)) {
-				customer.GetRental().remove(i) ;
+		item.setAvailable(true);
+		for(int i = 0 ; i < customer.getRental().size() ; i++) {
+			if(customer.getRental().get(i).equals(rental)) {
+				customer.getRental().remove(i) ;
 			}
 		}
 	}
 	
 	public Customer GetCustomerByID(int ID ) {
 		for(int i = 0 ; i < RegisteredPpl.size() ; i++ ) {
-			if(RegisteredPpl.get(i).GetID()== ID) {
+			if(RegisteredPpl.get(i).getId()== ID) {
 				return RegisteredPpl.get(i);
 			}			
 		}
@@ -72,7 +65,7 @@ public class RentalStore {
 	
 	public Item GetItemByID(int ID) {
 		for(int i = 0 ; i < ItemList.size() ; i++ ) {
-			if(ItemList.get(i).GetID()== ID) {
+			if(ItemList.get(i).getId()== ID) {
 				return ItemList.get(i);
 			}			
 		}

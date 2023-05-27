@@ -11,15 +11,15 @@ public abstract class Item {
 	protected boolean isAvailable ;
 	int id;
 	
-	public String GetTitle() {
+	public String getTitle() {
 		return title;
 	}
 	
-	public String GetGenre() {
+	public String getGenre() {
 		return genre;
 	}
 	
-	public String GetReleaseDate() {
+	public String getReleaseDate() {
 		return releaseDate;
 	}
 	
@@ -27,27 +27,27 @@ public abstract class Item {
 		return isAvailable;
 	}
 	
-	void SetAvailable(boolean status){
+	void setAvailable(boolean status){
 		isAvailable = status ;
 	}
 	
-	public int GetID(){
+	public int getId(){
 		return id;	
 	}
 	
-	public void SetTitle(String title ) {
+	public void setTitle(String title ) {
 		this.title = title;
 	}
 	
-	public void SetGenre(String genre) {
+	public void setGenre(String genre) {
 		this.genre = genre;
 	}
 	
-	public void SetReleaseDate(String releaseDate) {
+	public void setReleaseDate(String releaseDate) {
 		this.releaseDate = releaseDate;
 	}
 
-	public void SetID(int id) {
+	public void setId(int id) {
 		this.id = id ;
 	}
 	

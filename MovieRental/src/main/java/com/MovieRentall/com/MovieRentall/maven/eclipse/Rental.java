@@ -6,17 +6,17 @@ import java.text.SimpleDateFormat;
 public class Rental {
 	private Item rentedItem ;
 	private Customer renter ;
-	private int ID  ;
+	private int id  ;
 	private int instanceID = 0;
 	private Date rentalDate ;
 	private Date returnDate ;
 	String rentalDateStr;
 	String returnDateStr;
 	SimpleDateFormat obj = new SimpleDateFormat("MM-dd-yyyy HH:mm:ss");
-	Rental(Item rentedItem,Customer renter ){
+	Rental(Item rentedItem,Customer renter,int id ){
 		this.rentedItem = rentedItem;
 		this.renter = renter ;
-		int ID = instanceID;
+		 this.id = id;
 		AddID();
 		
 		rentalDate = new Date();
@@ -24,10 +24,10 @@ public class Rental {
 		
 	}
 	private void AddID() {
-		ID++;
+		id++;
 	}
 	public int GetID() {
-		return ID ;
+		return id ;
 	}
 	
 	public Item GetItem() {
